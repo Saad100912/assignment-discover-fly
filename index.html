@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
     <!-- Stylesheet -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -43,7 +44,7 @@
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">Departure</label>
-                    <input class="inp-style" type="date" name="">
+                        <input class="inp-style" type="date" name="">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
@@ -56,19 +57,23 @@
                     <input id="first-quantity" class="inp-style inp-width" type="text" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <button onclick="QuantityChanges('first', false)" class="btn btn-info"><i class="fas fa-minus"></i></button>
-                    <button onclick="QuantityChanges('first', true)" class="btn btn-info"><i class="fas fa-plus"></i></button>
+                    <button onclick="QuantityChanges('first', false)" class="btn btn-info"><i
+                            class="fas fa-minus"></i></button>
+                    <button onclick="QuantityChanges('first', true)" class="btn btn-info"><i
+                            class="fas fa-plus"></i></button>
                 </div>
             </div>
-            
+
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
                     <input id="economy-quantity" class="inp-style inp-width" type="text" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <button onclick="QuantityChanges('economy', false)" class="btn btn-info"><i class="fas fa-minus"></i></button>
-                    <button onclick="QuantityChanges('economy', true)" class="btn btn-info"><i class="fas fa-plus"></i></button>
+                    <button onclick="QuantityChanges('economy', false)" class="btn btn-info"><i
+                            class="fas fa-minus"></i></button>
+                    <button onclick="QuantityChanges('economy', true)" class="btn btn-info"><i
+                            class="fas fa-plus"></i></button>
                 </div>
             </div>
             <div class="calculations">
@@ -99,57 +104,114 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-style" data-toggle="modal"
+                data-target="#confirm">BUY NOW</button>
+
+            <!-- Confirm purchase modal -->
+            <div class="modal fade" id="confirm" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Confirm Purchase</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you that you want to buy these tickets?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-dismiss="modal" data-target="#done">YES</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Confirmation of purchase and thanking Modal -->
+            <div class="modal fade" id="done" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Purchase Completed</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Thank you for purchasing.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="booking-content">
             <h1 class="title-color">discover <br> around the world</h1>
-            <p class="text-color">Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
+            <p class="text-color">Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam
+                fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis
+                eaque deserunt nobise voluptatibus quam</p>
         </div>
-    </section>
+        </section>
 
-    <script>
-        // "classtype" in variable name means - first class or economy class.
+        <script>
+            // "classType" in variable name means - first class or economy class.
 
-        // This function is to show the increase and decrease of quantity number.
-        function QuantityChanges(classType, isIncrease){
-            const classTypeOldQuantity = getInputQuantity(classType);
-            let classTypeNewQuantity = classTypeOldQuantity;
-            if(isIncrease == true){
-                classTypeNewQuantity = classTypeOldQuantity + 1;
+            // This function is to show the increase and decrease of quantity number.
+            function QuantityChanges(classType, isIncrease) {
+                const classTypeOldQuantity = getInputQuantity(classType);
+                let classTypeNewQuantity = classTypeOldQuantity;
+                if (isIncrease == true) {
+                    classTypeNewQuantity = classTypeOldQuantity + 1;
+                }
+                if (isIncrease == false && classTypeOldQuantity > 0) {
+                    classTypeNewQuantity = classTypeOldQuantity - 1;
+                }
+                document.getElementById(classType + '-quantity').value = classTypeNewQuantity;
+                calculateTotal();
             }
-            if(isIncrease == false && classTypeOldQuantity > 0){
-                classTypeNewQuantity = classTypeOldQuantity - 1;
+
+            // This function is to get the quantity change number which will be used for calculation. 
+            function getInputQuantity(classType) {
+                const classTypeOldQuantity = document.getElementById(classType + '-quantity').value;
+                const classTypeQuantity = parseInt(classTypeOldQuantity);
+                return classTypeQuantity;
             }
-            document.getElementById(classType + '-quantity').value = classTypeNewQuantity;
-            calculateTotal();
-        }
 
-        // This function is to get the quantity change number which will be used for calculation. 
-        function getInputQuantity(classType){
-            const classTypeOldQuantity = document.getElementById(classType + '-quantity').value;
-            const classTypeQuantity = parseInt(classTypeOldQuantity);
-            return classTypeQuantity;
-        }
+            // This function is to handle the calculation of subtotal, tax and grand total.
+            function calculateTotal() {
+                const firstNewQuantity = getInputQuantity('first');
+                const economyNewQuantity = getInputQuantity('economy');
 
-        // This function is to handle the calculation of subtotal, tax and grand total.
-        function calculateTotal(){
-            const firstNewQuantity = getInputQuantity('first');
-            const economyNewQuantity = getInputQuantity('economy');
+                const subTotalPrice = firstNewQuantity * 150 + economyNewQuantity * 100;
+                document.getElementById('sub-total').innerText = subTotalPrice;
 
-            const subTotalPrice = firstNewQuantity * 150 + economyNewQuantity * 100;
-            document.getElementById('sub-total').innerText = subTotalPrice;
+                const tax = Math.round(subTotalPrice * 0.1);
+                document.getElementById('tax').innerText = tax;
 
-            const tax = Math.round(subTotalPrice * 0.1);
-            document.getElementById('tax').innerText = tax;
+                const total = subTotalPrice + tax;
+                document.getElementById('total').innerText = total;
+            }
 
-            const total = subTotalPrice + tax;
-            document.getElementById('total').innerText = total;
-        }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 
-    </script>
-
-    <!--Thank You-->
+        <!--Thank You-->
 </body>
 
 </html>
